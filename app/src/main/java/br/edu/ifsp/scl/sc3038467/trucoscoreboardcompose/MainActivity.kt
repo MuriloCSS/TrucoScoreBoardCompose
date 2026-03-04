@@ -183,5 +183,25 @@ fun TrucoApp() {
             Text("Reiniciar Partida", fontSize = 18.sp)
         }
     }
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                if (!isGameOver) showDialog = false
+            },
+            title = { Text(dialogTitle) },
+            text = { Text(dialogMessage) },
+            confirmButton = {
+                Button(onClick = {
+                    if (isGameOver) {
+                        resetGame()
+                    } else {
+                        showDialog = false
+                    }
+                }) {
+                    Text(if (isGameOver) "Nova Partida" else "OK!")
+                }
+            }
+        )
+    }
 
 }
