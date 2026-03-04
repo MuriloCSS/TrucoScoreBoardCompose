@@ -172,5 +172,16 @@ fun TrucoApp() {
             }
         }
 
+        Button(
+            onClick = { resetGame() },
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF57C00)),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp)
+                .height(56.dp)
+        ) {
+            Text("Reiniciar Partida", fontSize = 18.sp)
         }
+    }
+
 }
