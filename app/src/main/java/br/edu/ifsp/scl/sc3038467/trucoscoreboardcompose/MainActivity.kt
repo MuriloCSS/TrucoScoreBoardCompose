@@ -87,4 +87,18 @@ fun TrucoApp() {
             }
         }
     }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+        ) {
+        }
+
+        }
 }
