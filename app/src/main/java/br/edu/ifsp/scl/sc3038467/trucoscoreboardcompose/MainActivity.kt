@@ -130,6 +130,13 @@ fun TrucoApp() {
                     Text("+3 Pontos")
                 }
             }
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(2.dp)
+                    .background(Color.LightGray)
+                    .padding(horizontal = 8.dp)
+            )
         }
 
         }
