@@ -44,4 +44,13 @@ fun TrucoApp() {
     var dialogMessage by remember { mutableStateOf("") }
     var isGameOver by remember { mutableStateOf(false) }
 
+
+    fun resetGame() {
+        scoreA = 0
+        scoreB = 0
+        alertMao11ShownA = false
+        alertMao11ShownB = false
+        isGameOver = false
+        showDialog = false
+    }
 }
