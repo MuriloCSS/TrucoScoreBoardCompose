@@ -137,6 +137,39 @@ fun TrucoApp() {
                     .background(Color.LightGray)
                     .padding(horizontal = 8.dp)
             )
+
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(text = "Equipe B", fontSize = 28.sp, fontWeight = FontWeight.Bold)
+                Text(
+                    text = "$scoreB",
+                    fontSize = 72.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(vertical = 24.dp)
+                )
+                Button(
+                    onClick = { addPoints(isTeamA = false, points = 1) },
+                    enabled = !isGameOver,
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3CAF66)),
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)
+                ) {
+                    Text("+1 Ponto")
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                Button(
+                    onClick = { addPoints(isTeamA = false, points = 3) },
+                    enabled = scoreB < 11 && !isGameOver,
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2196F3)),
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)
+                ) {
+                    Text("+3 Pontos")
+                }
+            }
         }
 
         }
