@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -73,78 +74,89 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
         }
     }
 
-    Row(
-        modifier = Modifier.fillMaxSize()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
     ) {
-        Column(
+        Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .weight(1f)
+
         ) {
-            Text(text = "Equipe A", fontSize = 32.sp, modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 64.dp)
-
-            )
-
-            Text(text = "$pontosA", fontSize = 48.sp, modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 48.dp)
-            )
-
-            Button({somarPontos(true, 1)}, modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 96.dp)
-                .width(160.dp)
-                .height(60.dp)
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(1f)
             ) {
-                Text("+1 ponto")
+                Text(text = "Equipe A", fontSize = 32.sp, modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 64.dp)
+
+                )
+
+                Text(text = "$pontosA", fontSize = 48.sp, modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 48.dp)
+                )
+
+                Button({somarPontos(true, 1)}, modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 96.dp)
+                    .width(160.dp)
+                    .height(60.dp)
+                ) {
+                    Text("+1 ponto")
+                }
+                Button({somarPontos(true, 3)}, modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 16.dp)
+                    .width(160.dp)
+                    .height(60.dp)
+                ) {
+                    Text("+3 pontos")
+                }
+
             }
-            Button({somarPontos(true, 3)}, modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 16.dp)
-                .width(160.dp)
-                .height(60.dp)
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(1f)
             ) {
-                Text("+3 pontos")
+                Text(text = "Equipe B", fontSize = 32.sp, modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 64.dp)
+
+                )
+
+                Text(text = "$pontosB", fontSize = 48.sp, modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 48.dp)
+                )
+
+                Button({somarPontos(false, 1)}, modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 96.dp)
+                    .width(160.dp)
+                    .height(60.dp)
+                ) {
+                    Text("+1 ponto")
+                }
+                Button({somarPontos(false, 3)}, modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 16.dp)
+                    .width(160.dp)
+                    .height(60.dp)
+                ) {
+                    Text("+3 pontos")
+                }
+
             }
-
-        }
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f)
-        ) {
-            Text(text = "Equipe B", fontSize = 32.sp, modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 64.dp)
-
-            )
-
-            Text(text = "$pontosB", fontSize = 48.sp, modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 48.dp)
-            )
-
-            Button({somarPontos(false, 1)}, modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 96.dp)
-                .width(160.dp)
-                .height(60.dp)
-            ) {
-                Text("+1 ponto")
-            }
-            Button({somarPontos(false, 3)}, modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 16.dp)
-                .width(160.dp)
-                .height(60.dp)
-            ) {
-                Text("+3 pontos")
-            }
-
         }
     }
+
+
     if (alerta){
         AlertDialog(
             onDismissRequest = {alerta = false},
