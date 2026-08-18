@@ -45,8 +45,28 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
 
-    var pontsA by remember { mutableStateOf(0) }
-    var pontsB by remember { mutableStateOf(0) }
+    var pontosA by remember { mutableStateOf(0) }
+    var pontosB by remember { mutableStateOf(0) }
+    var mensagemAviso by remember { mutableStateOf("") }
+
+    fun somarPontos(timeA: Boolean, pontos: Int){
+        if (timeA){
+            pontosA += pontos
+            if (pontosA >= 12){
+                mensagemAviso = "A Equipe A ganhou a partida!"
+            }else if (pontosA == 11){
+                mensagemAviso = "A Equipe A está na mão de 11"
+            }
+        }else{
+            pontosB += pontos
+            if (pontosA >= 12){
+                mensagemAviso = "A Equipe B ganhou a partida!"
+            }else if (pontosA == 11){
+                mensagemAviso = "A Equipe B está na mão de 11"
+            }
+        }
+    }
+
 
     Row(
         modifier = Modifier.fillMaxSize()
@@ -62,12 +82,12 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
 
             )
 
-            Text(text = "$pontsA", fontSize = 48.sp, modifier = Modifier
+            Text(text = "$pontosA", fontSize = 48.sp, modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 48.dp)
             )
 
-            Button({}, modifier = Modifier
+            Button({somarPontos(true, 1)}, modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 96.dp)
                 .width(160.dp)
@@ -75,7 +95,7 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
             ) {
                 Text("+1 ponto")
             }
-            Button({}, modifier = Modifier
+            Button({somarPontos(true, 3)}, modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 16.dp)
                 .width(160.dp)
