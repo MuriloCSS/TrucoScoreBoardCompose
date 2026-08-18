@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -48,25 +49,29 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
     var pontosA by remember { mutableStateOf(0) }
     var pontosB by remember { mutableStateOf(0) }
     var mensagemAviso by remember { mutableStateOf("") }
+    var alerta by remember { mutableStateOf(false) }
 
     fun somarPontos(timeA: Boolean, pontos: Int){
         if (timeA){
             pontosA += pontos
             if (pontosA >= 12){
                 mensagemAviso = "A Equipe A ganhou a partida!"
+                alerta = true
             }else if (pontosA == 11){
                 mensagemAviso = "A Equipe A está na mão de 11"
+                alerta = true
             }
         }else{
             pontosB += pontos
             if (pontosA >= 12){
                 mensagemAviso = "A Equipe B ganhou a partida!"
+                alerta = true
             }else if (pontosA == 11){
                 mensagemAviso = "A Equipe B está na mão de 11"
+                alerta = true
             }
         }
     }
-
 
     Row(
         modifier = Modifier.fillMaxSize()
@@ -117,6 +122,27 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
             )
 
         }
+    }
+    if (alerta){
+        AlertDialog(
+            onDismissRequest = {alerta = false},
+            title = {Text("Aviso")},
+            text = {Text(mensagemAviso)},
+            confirmButton = {
+                Button(
+                    onClick ={if(pontosA >= 12 || pontosB >= 12){
+                        pontosA = 0
+                        pontosB = 0
+                    }
+                        alerta = false
+                    }
+
+                ) {
+                    Text("OK")
+                }
+            }
+
+        )
     }
 }
 
