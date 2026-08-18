@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -78,6 +79,7 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
+            .safeDrawingPadding()
     ) {
         Row(
             modifier = Modifier
@@ -153,6 +155,13 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
                 }
 
             }
+        }
+        Button({
+            pontosA = 0
+            pontosB = 0
+            alerta = false
+        }, modifier = Modifier.fillMaxWidth().height(56.dp)) {
+            Text("Reiniciar")
         }
     }
 
