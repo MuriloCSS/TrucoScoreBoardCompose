@@ -63,10 +63,10 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
             }
         }else{
             pontosB += pontos
-            if (pontosA >= 12){
+            if (pontosB >= 12){
                 mensagemAviso = "A Equipe B ganhou a partida!"
                 alerta = true
-            }else if (pontosA == 11){
+            }else if (pontosB == 11){
                 mensagemAviso = "A Equipe B está na mão de 11"
                 alerta = true
             }
@@ -120,6 +120,28 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
                 .padding(top = 64.dp)
 
             )
+
+            Text(text = "$pontosB", fontSize = 48.sp, modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(top = 48.dp)
+            )
+
+            Button({somarPontos(false, 1)}, modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(top = 96.dp)
+                .width(160.dp)
+                .height(60.dp)
+            ) {
+                Text("+1 ponto")
+            }
+            Button({somarPontos(false, 3)}, modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(top = 16.dp)
+                .width(160.dp)
+                .height(60.dp)
+            ) {
+                Text("+3 pontos")
+            }
 
         }
     }
