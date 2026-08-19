@@ -111,7 +111,7 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
                 ) {
                     Text("+1 ponto")
                 }
-                Button({somarPontos(true, 3)}, modifier = Modifier
+                Button({somarPontos(true, 3)}, enabled = pontosA < 11 && pontosB < 12 ,modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = 16.dp)
                     .width(160.dp)
@@ -145,7 +145,7 @@ fun ContadorTruco(name: String, modifier: Modifier = Modifier) {
                 ) {
                     Text("+1 ponto")
                 }
-                Button({somarPontos(false, 3)}, modifier = Modifier
+                Button({somarPontos(false, 3)}, enabled = pontosB < 11 && pontosA < 12 ,modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = 16.dp)
                     .width(160.dp)
